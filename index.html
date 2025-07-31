@@ -105,13 +105,15 @@
     const uName = query.get("uName");
     const uclick = query.get("uclick");
 
-    // แปลงปี ค.ศ. เป็น พ.ศ.
     document.getElementById("thaiYear").textContent = new Date().getFullYear() + 543;
 
     if (uVDO) {
-      document.getElementById("video-frame").src =
+      const srcUrl =
         "https://www.youtube.com/embed/" + encodeURIComponent(uVDO) +
-        "?autoplay=1&mute=1&loop=1&playlist=" + encodeURIComponent(uVDO) + "&rel=0";
+        "?autoplay=1&mute=1&loop=1&playlist=" + encodeURIComponent(uVDO) +
+        "&modestbranding=1&rel=0&showinfo=0&vq=hd1080";
+
+      document.getElementById("video-frame").src = srcUrl;
       document.getElementById("like-button").href = "https://www.youtube.com/watch?v=" + encodeURIComponent(uVDO);
     } else {
       document.getElementById("video-box").innerHTML = "<p class='error'>❌ ไม่พบรหัสวิดีโอ (uVDO)</p>";
