@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TheBank VDO2U</title>
+  <link rel="icon" href="https://www.globalvalueth.com/GIPIC/logoTheBankNEW24668.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js"></script>
+  <style>
+    body {
+      font-family: 'Noto Serif Thai', sans-serif;
+      background: linear-gradient(135deg, rgb(240, 243, 252), rgb(200, 234, 245), rgb(240, 243, 252));
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .video-container {
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      background: #000;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .subscribe-section {
+      text-align: center;
+      margin-top: 1.8rem;
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 900px;
+      max-width: 900px;
+    }
+    .btn-subscribe, .btn-like {
+      display: inline-block;
+      background: #cc0000;
+      color: white;
+      font-size: 1rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease;
+      white-space: nowrap;
+      margin: 0 10px;
+    }
+    .btn-subscribe:hover {
+      background: #a00000;
+    }
+    .btn-like {
+      background: #ff4081;
+    }
+    .btn-like:hover {
+      background: #e91e63;
+    }
+    h4.title {
+      margin-bottom: 1rem;
+      color: #d32f2f;
+    }
+    .footer-note {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.25rem;
+      text-align: center;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="row text-center">
+    <h4 class="title" id="video-title">🎉 อย่าพลาดทุกอัปเดต! 🎉</h4>
+    <div class="footer-note">ลิขสิทธิ์เป็นของ บริษัท โกลบอล แวลู จำกัด &copy; <span id="thaiYear"></span></div>
+  </div>
+
+  <div class="video-container" id="video-box">
+    <iframe id="video-frame" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
+
+  <div class="subscribe-section">
+    <h5>🎉 กดติดตามช่องของเราเพื่อรับชมวิดีโอใหม่ ๆ ก่อนใคร 😄</h5>
+    <a class="btn-subscribe" href="https://www.youtube.com/@TheBankAcademy?sub_confirmation=1" target="_blank">✅ กดติดตามช่อง</a>
+    <a class="btn-like" id="like-button" href="#" target="_blank">❤️ กด Like บน YouTube</a>
+  </div>
+
+  <script>
+    const query = new URLSearchParams(window.location.search);
+    const uVDO = query.get("uVDO");
+    const uName = query.get("uName");
+    const uclick = query.get("uclick");
+
+    // แปลงปี ค.ศ. เป็น พ.ศ.
+    document.getElementById("thaiYear").textContent = new Date().getFullYear() + 543;
+
+    if (uVDO) {
+      document.getElementById("video-frame").src =
+        "https://www.youtube.com/embed/" + encodeURIComponent(uVDO) +
+        "?autoplay=1&mute=1&loop=1&playlist=" + encodeURIComponent(uVDO) + "&rel=0";
+      document.getElementById("like-button").href = "https://www.youtube.com/watch?v=" + encodeURIComponent(uVDO);
+    } else {
+      document.getElementById("video-box").innerHTML = "<p class='error'>❌ ไม่พบรหัสวิดีโอ (uVDO)</p>";
+    }
+
+    if (uName) {
+      document.getElementById("video-title").textContent = "🎬 " + decodeURIComponent(uName);
+    }
+  </script>
+
+</body>
+</html>
