@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +20,7 @@
       flex-direction: column;
       align-items: center;
     }
+
     .video-container {
       width: 100%;
       max-width: 900px;
@@ -28,11 +30,13 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
       background: #000;
     }
+
     iframe {
       width: 100%;
       height: 100%;
       border: none;
     }
+
     .subscribe-section {
       text-align: center;
       margin-top: 1.8rem;
@@ -43,7 +47,9 @@
       width: 900px;
       max-width: 900px;
     }
-    .btn-subscribe, .btn-like {
+
+    .btn-subscribe,
+    .btn-like {
       display: inline-block;
       background: #cc0000;
       color: white;
@@ -56,25 +62,31 @@
       white-space: nowrap;
       margin: 0 10px;
     }
+
     .btn-subscribe:hover {
       background: #a00000;
     }
+
     .btn-like {
       background: #ff4081;
     }
+
     .btn-like:hover {
       background: #e91e63;
     }
+
     h4.title {
       margin-bottom: 1rem;
       color: #d32f2f;
     }
+
     .footer-note {
       font-size: 0.85rem;
       color: #666;
       margin-top: 0.25rem;
       text-align: center;
     }
+
     .error {
       color: red;
       font-weight: bold;
@@ -82,6 +94,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="row text-center">
@@ -95,8 +108,27 @@
 
   <div class="subscribe-section">
     <h5>🎉 กดติดตามช่องของเราเพื่อรับชมวิดีโอใหม่ ๆ ก่อนใคร 😄</h5>
-    <a class="btn-subscribe" href="https://www.youtube.com/@TheBankAcademy?sub_confirmation=1" target="_blank">✅ กดติดตามช่อง</a>
+    <a class="btn-subscribe" href="https://www.youtube.com/@TheBankAcademy?sub_confirmation=1" target="_blank">✅
+      กดติดตามช่อง</a>
     <a class="btn-like" id="like-button" href="#" target="_blank">❤️ กด Like บน YouTube</a>
+
+    <div class="mt-4">
+      <h5>📚 หัวข้อแนะนำเพิ่มเติม:</h5>
+      <div class="row row-cols-1 row-cols-md-3 g-3 text-start">
+        <div class="col"><a href="javascript:void(0)" onclick="playVDO('QmMeYYXZSpY', 'การลงทะเบียนขอใช้ TheBank')" class="btn btn-outline-primary w-100">การลงทะเบียนขอใช้ TheBank</a></div>
+
+        <div class="col"><a href="javascript:void(0)" onclick="playVDO('QmMeYYXZSpY', 'การลงทะเบียนขอเพิ่มเครื่องใช้ TheBank')" class="btn btn-outline-primary w-100">การลงทะเบียนขอเพิ่มเครื่องใช้ TheBank</a></div>
+
+        <div class="col"><a href="javascript:void(0)" onclick="playVDO('QmMeYYXZSpY', 'การลงทะเบียนยืนยันเปิดใช้งาน TheBank')" class="btn btn-outline-primary w-100">การลงทะเบียนยืนยันเปิดใช้งาน TheBank</a></div>
+
+        <div class="col"><a href="javascript:void(0)" onclick="playVDO('QmMeYYXZSpY', 'การติดตั้งระบบ TheBank')" class="btn btn-outline-primary w-100">การติดตั้งระบบ TheBank</a></div>
+
+        <div class="col"><a href="javascript:void(0)" onclick="playVDO('QmMeYYXZSpY', 'การติดตั้งเครื่องพิมพ์สมุด Compuprint SP40Plus')" class="btn btn-outline-primary w-100"> การติดตั้งเครื่องพิมพ์สมุด Compuprint SP40Plus</a></div>
+
+        <div class="col"><a href="javascript:void(0)" onclick="playVDO('QmMeYYXZSpY', 'การ Set ให้วินโดวส์ใช้ระบบวันที่เวลาภาษาไทย')" class="btn btn-outline-primary w-100">การ Set ให้วินโดวส์ใช้ระบบวันที่เวลาภาษาไทย</a></div>
+
+      </div>
+    </div>
   </div>
 
   <script>
@@ -105,24 +137,44 @@
     const uName = query.get("uName");
     const uclick = query.get("uclick");
 
+    const videoFrame = document.getElementById("video-frame");
+    const likeButton = document.getElementById("like-button");
+    const title = document.getElementById("video-title");
+
+    // ตั้งปี พ.ศ.
     document.getElementById("thaiYear").textContent = new Date().getFullYear() + 543;
 
-    if (uVDO) {
-      const srcUrl =
-        "https://www.youtube.com/embed/" + encodeURIComponent(uVDO) +
-        "?autoplay=1&mute=1&loop=1&playlist=" + encodeURIComponent(uVDO) +
-        "&modestbranding=1&rel=0&showinfo=0&vq=hd1080";
+    // ฟังก์ชันเปลี่ยนวิดีโอ
+    function playVDO(videoID, videoName = "") {
+      const embedUrl = `https://www.youtube.com/embed/${videoID}?autoplay=1&mute=0&loop=1&playlist=${videoID}&modestbranding=1&rel=0&showinfo=0&vq=hd1080`;
 
-      document.getElementById("video-frame").src = srcUrl;
-      document.getElementById("like-button").href = "https://www.youtube.com/watch?v=" + encodeURIComponent(uVDO);
-    } else {
-      document.getElementById("video-box").innerHTML = "<p class='error'>❌ ไม่พบรหัสวิดีโอ (uVDO)</p>";
-    }
+      // แทน iframe เดิมด้วยอันใหม่ (แก้ autoplay ไม่ทำงาน)
+      const newFrame = document.createElement("iframe");
+      newFrame.src = embedUrl;
+      newFrame.allow = "autoplay; encrypted-media";
+      newFrame.allowFullscreen = true;
+      newFrame.style.width = "100%";
+      newFrame.style.height = "100%";
+      newFrame.style.border = "none";
 
-    if (uName) {
-      document.getElementById("video-title").textContent = "🎬 " + decodeURIComponent(uName);
+      const videoBox = document.getElementById("video-box");
+      videoBox.innerHTML = ""; // ล้าง iframe เดิม
+      videoBox.appendChild(newFrame);
+
+      // อัปเดตลิงก์ปุ่ม Like
+      document.getElementById("like-button").href = `https://www.youtube.com/watch?v=${videoID}`;
+
+      // เปลี่ยนชื่อหัวข้อ
+      if (videoName) {
+        document.getElementById("video-title").textContent = "🎬 " + videoName;
+      }
     }
   </script>
+<br>
+<div style="width: 100vw; background-color: #041C50; color: white; text-align: center; padding: 1rem 0; font-size: 0.95rem; font-weight: 500;">
+  © สงวนลิขสิทธิ์ พ.ศ.2547 - บริษัท โกลบอล แวลู จำกัด
+</div>
 
 </body>
+
 </html>
