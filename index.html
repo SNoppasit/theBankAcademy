@@ -131,45 +131,48 @@
     </div>
   </div>
 
-  <script>
-    const query = new URLSearchParams(window.location.search);
-    const uVDO = query.get("uVDO");
-    const uName = query.get("uName");
-    const uclick = query.get("uclick");
+<script>
+  const query = new URLSearchParams(window.location.search);
+  const uVDO = query.get("uVDO");
+  const uName = query.get("uName");
+  const uclick = query.get("uclick");
 
-    const videoFrame = document.getElementById("video-frame");
-    const likeButton = document.getElementById("like-button");
-    const title = document.getElementById("video-title");
+  const videoFrame = document.getElementById("video-frame");
+  const likeButton = document.getElementById("like-button");
+  const title = document.getElementById("video-title");
 
-    // ตั้งปี พ.ศ.
-    document.getElementById("thaiYear").textContent = new Date().getFullYear() + 543;
+  // ตั้งปี พ.ศ.
+  document.getElementById("thaiYear").textContent = new Date().getFullYear() + 543;
 
-    // ฟังก์ชันเปลี่ยนวิดีโอ
-    function playVDO(videoID, videoName = "") {
-      const embedUrl = `https://www.youtube.com/embed/${videoID}?autoplay=1&mute=0&loop=1&playlist=${videoID}&modestbranding=1&rel=0&showinfo=0&vq=hd1080`;
+  // ✅ เพิ่มบรรทัดนี้
+  if (uVDO) {
+    playVDO(uVDO, uName);
+  }
 
-      // แทน iframe เดิมด้วยอันใหม่ (แก้ autoplay ไม่ทำงาน)
-      const newFrame = document.createElement("iframe");
-      newFrame.src = embedUrl;
-      newFrame.allow = "autoplay; encrypted-media";
-      newFrame.allowFullscreen = true;
-      newFrame.style.width = "100%";
-      newFrame.style.height = "100%";
-      newFrame.style.border = "none";
+  // ฟังก์ชันเปลี่ยนวิดีโอ
+  function playVDO(videoID, videoName = "") {
+    const embedUrl = `https://www.youtube.com/embed/${videoID}?autoplay=1&mute=0&loop=1&playlist=${videoID}&modestbranding=1&rel=0&showinfo=0&vq=hd1080`;
 
-      const videoBox = document.getElementById("video-box");
-      videoBox.innerHTML = ""; // ล้าง iframe เดิม
-      videoBox.appendChild(newFrame);
+    const newFrame = document.createElement("iframe");
+    newFrame.src = embedUrl;
+    newFrame.allow = "autoplay; encrypted-media";
+    newFrame.allowFullscreen = true;
+    newFrame.style.width = "100%";
+    newFrame.style.height = "100%";
+    newFrame.style.border = "none";
 
-      // อัปเดตลิงก์ปุ่ม Like
-      document.getElementById("like-button").href = `https://www.youtube.com/watch?v=${videoID}`;
+    const videoBox = document.getElementById("video-box");
+    videoBox.innerHTML = "";
+    videoBox.appendChild(newFrame);
 
-      // เปลี่ยนชื่อหัวข้อ
-      if (videoName) {
-        document.getElementById("video-title").textContent = "🎬 " + videoName;
-      }
+    document.getElementById("like-button").href = `https://www.youtube.com/watch?v=${videoID}`;
+
+    if (videoName) {
+      document.getElementById("video-title").textContent = "🎬 " + videoName;
     }
-  </script>
+  }
+</script>
+
 <br>
 <div style="width: 100vw; background-color: #041C50; color: white; text-align: center; padding: 1rem 0; font-size: 0.95rem; font-weight: 500;">
   © สงวนลิขสิทธิ์ พ.ศ.2547 - บริษัท โกลบอล แวลู จำกัด
