@@ -125,36 +125,37 @@
     </div>
   </div>
 
-  <script>
-    const query = new URLSearchParams(window.location.search);
-    const uVDO = query.get("uVDO");
-    const uName = query.get("uName");
-    const uclick = query.get("uclick");
+<script>
+  const query = new URLSearchParams(window.location.search);
+  const uVDO = query.get("uVDO");
+  const uName = query.get("uName");
+  const uclick = query.get("uclick");
 
-    const videoFrame = document.getElementById("video-frame");
-    const likeButton = document.getElementById("like-button");
-    const title = document.getElementById("video-title");
+  const videoFrame = document.getElementById("video-frame");
+  const likeButton = document.getElementById("like-button");
+  const title = document.getElementById("video-title");
 
-    document.getElementById("thaiYear").textContent = new Date().getFullYear() + 543;
+  // ❌ บรรทัดนี้ทำให้ error เพราะไม่มี element ชื่อ thaiYear
+  // document.getElementById("thaiYear").textContent = new Date().getFullYear() + 543;
 
-    if (uVDO) {
-      playVDO(uVDO, uName);
+  if (uVDO) {
+    playVDO(uVDO, uName);
+  }
+
+  function playVDO(videoID, videoName = "") {
+    const embedUrl = `https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1&loop=1&playlist=${videoID}&rel=0&controls=1&vq=hd1080`;
+
+    videoFrame.src = embedUrl;
+    videoFrame.setAttribute("allow", "autoplay; encrypted-media");
+    videoFrame.setAttribute("allowfullscreen", "true");
+
+    likeButton.href = `https://www.youtube.com/watch?v=${videoID}`;
+
+    if (videoName) {
+      title.textContent = "🎬 " + videoName;
     }
-
-    function playVDO(videoID, videoName = "") {
-      const embedUrl = `https://www.youtube.com/embed/${videoID}?autoplay=1&mute=1&loop=1&playlist=${videoID}&rel=0&controls=1&vq=hd1080`;
-
-      videoFrame.src = embedUrl;
-      videoFrame.setAttribute("allow", "autoplay; encrypted-media");
-      videoFrame.setAttribute("allowfullscreen", "true");
-
-      likeButton.href = `https://www.youtube.com/watch?v=${videoID}`;
-
-      if (videoName) {
-        title.textContent = "🎬 " + videoName;
-      }
-    }
-  </script>
+  }
+</script>
   <br>
   <h3>บริษัท โกลบอลแวลู จำกัด</h3>    
 <div class="footer-note">  สำนักงานใหญ่ : ศูนย์พัฒนาซอฟต์แวร์เซ็นเตอร์ เชียงใหม่, ศูนย์ลูกค้าสัมพันธ์ : กรุงเทพ |   โทร. <a href="tel:0889318109">088-9318109</a>, <a href="tel:0956913595">095-6913595</a>, <a href="tel:0825616969">082-5616969</a> | 
