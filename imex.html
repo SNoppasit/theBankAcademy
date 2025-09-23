@@ -2,8 +2,8 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <title>ข้อมูลบริษัท โกลบอล แวลู จำกัด</title>
-<link rel="icon" href="https://www.globalvalueth.com/GIPIC/logoTheBankNEW24668.png" type="image/png">
+  <title>อ่านก่อนนำเข้าและส่งออกข้อมูล</title>
+  <link rel="icon" href="https://www.globalvalueth.com/GIPIC/logoTheBankNEW24668.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Google Font -->
@@ -18,43 +18,58 @@
       font-family: 'Noto Sans Thai', sans-serif;
       background: #f5f9fc;
       color: #333;
-      line-height: 1.7;
+      line-height: 1.8;
     }
     h1, h2, h3 {
       font-weight: 700;
     }
     .hero {
-      background: linear-gradient(135deg, #e3f2fd, #f1f8ff);
+      background: linear-gradient(135deg, #90caf9, #e3f2fd);
       padding: 3rem 1rem;
       text-align: center;
-      border-bottom: 4px solid #1976d2;
+      border-bottom: 5px solid #1565c0;
+      animation: fadeInDown 1s ease;
     }
     .hero h1 {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       color: #0d47a1;
     }
     .hero p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #444;
     }
     .content {
       max-width: 900px;
       margin: 2rem auto;
-      padding: 1.5rem;
+      padding: 2rem;
       background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      animation: fadeInUp 1s ease;
+    }
+    .content h2 {
+      margin-top: 2rem;
+      color: #0d47a1;
+    }
+    .content ul li {
+      margin-bottom: .5rem;
     }
     .content img {
       max-width: 100%;
-      border-radius: 10px;
-      margin: 1rem 0;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+      transition: transform .3s ease;
+    }
+    .content img:hover {
+      transform: scale(1.03);
     }
     .contact-box {
-      margin-top: 2rem;
-      padding: 1.5rem;
+      margin-top: 2.5rem;
+      padding: 1.8rem;
       background: #e3f2fd;
-      border-radius: 12px;
+      border-radius: 15px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+      animation: fadeIn 1.2s ease;
     }
     .contact-box h4 {
       font-weight: 600;
@@ -72,6 +87,19 @@
       text-align: center;
       padding: 1rem 0;
       font-size: 0.95rem;
+      animation: fadeIn 1.5s ease;
+    }
+    @keyframes fadeIn {
+      from {opacity:0;}
+      to {opacity:1;}
+    }
+    @keyframes fadeInUp {
+      from {opacity:0; transform: translateY(20px);}
+      to {opacity:1; transform: translateY(0);}
+    }
+    @keyframes fadeInDown {
+      from {opacity:0; transform: translateY(-20px);}
+      to {opacity:1; transform: translateY(0);}
     }
   </style>
 </head>
@@ -79,36 +107,55 @@
 
   <!-- Hero Section -->
   <div class="hero">
-    <h1><i class="fa-solid fa-building"></i> บริษัท โกลบอล แวลู จำกัด</h1>
-    <p><em>มุ่งมั่นพัฒนาซอฟต์แวร์เพื่อชุมชน และองค์กรทั่วประเทศ</em></p>
+    <h1><i class="fa-solid fa-database"></i> อ่านก่อนนำเข้าและส่งออกข้อมูล</h1>
+    <p><em>คู่มือสำคัญที่ผู้ใช้ทุกคนควรเข้าใจก่อนใช้งานระบบ TheBank</em></p>
   </div>
 
   <!-- Content Section -->
   <div class="content">
-    <h2><i class="fa-solid fa-bullseye"></i> พันธกิจของเรา</h2>
+    <h2><i class="fa-solid fa-bullseye"></i> ข้อควรรู้เบื้องต้น</h2>
     <p>
-      บริษัท โกลบอล แวลู จำกัด ดำเนินธุรกิจด้าน <strong>การพัฒนาซอฟต์แวร์และระบบบัญชีชุมชน</strong>  
-      มุ่งเน้นการสร้าง <em>เทคโนโลยีที่เข้าถึงง่าย</em> รองรับการใช้งานภาษาไทยเต็มรูปแบบ  
-      เพื่อให้ทุกองค์กรสามารถก้าวไปข้างหน้าได้อย่างมั่นใจ
+      ระบบนี้ช่วยให้ผู้ใช้งานสามารถ <strong>นำเข้า (Import)</strong> และ 
+      <strong>ส่งออก (Export)</strong> ข้อมูลได้ด้วยตนเอง <br>
+      มีให้เลือก <em>2 แบบ</em>: 
+      <br><i class="fa-solid fa-file-circle-plus text-success"></i> ฐานข้อมูลเปล่า (สำหรับกรอกข้อมูลใหม่)<br>
+      <i class="fa-solid fa-file-export text-primary"></i> ฐานข้อมูลที่มีข้อมูลอยู่แล้ว (สำหรับนำไปใช้งานต่อ)
     </p>
 
     <img src="pp1.png" alt="ภาพประกอบสำนักงาน">
 
-    <h2><i class="fa-solid fa-lightbulb"></i> สิ่งที่เราให้บริการ</h2>
+    <h2><i class="fa-solid fa-file-export"></i> ข้อควรระวังในการส่งออก (Export)</h2>
     <ul>
-      <li><strong>ซอฟต์แวร์บัญชี</strong> สำหรับชุมชนและกองทุนหมู่บ้าน</li>
-      <li><strong>ระบบจัดการสมาชิก</strong> และการกู้ยืมแบบครบวงจร</li>
-      <li><strong>ระบบเรียกคิวด้วยเสียงภาษาไทย</strong> สำหรับหน่วยงาน</li>
-      <li><strong>บริการที่ปรึกษา</strong> และดูแลระบบหลังการขาย</li>
+      <li><i class="fa-solid fa-circle-check text-success"></i> ไฟล์ส่งออกจะเป็น <code>.csv</code> เท่านั้น</li>
+      <li><i class="fa-solid fa-file-excel text-success"></i> ต้องเปิดด้วย <strong>Excel</strong> เท่านั้น ห้ามใช้โปรแกรมอื่น</li>
+      <li><i class="fa-solid fa-floppy-disk text-info"></i> ควรบันทึกบ่อย ๆ (Ctrl+S) เพื่อกันไฟดับ/เครื่องแฮงค์</li>
+      <li><i class="fa-solid fa-ban text-danger"></i> ห้ามแก้ไขหรือลบหัวตาราง</li>
+      <li><i class="fa-solid fa-pen text-warning"></i> กรอกข้อมูลให้ถูกต้องและสะกดให้ตรง</li>
+    </ul>
+
+    <h2><i class="fa-solid fa-file-import"></i> การนำเข้า (Import)</h2>
+    <ul>
+      <li><i class="fa-solid fa-check-double text-success"></i> ใช้เฉพาะไฟล์ที่ส่งออกแล้ว และกรอกข้อมูลครบ</li>
+      <li><i class="fa-solid fa-ban text-danger"></i> ห้ามเปลี่ยนชื่อไฟล์ที่ส่งออกมา</li>
+      <li><i class="fa-solid fa-triangle-exclamation text-danger"></i> ตรวจสอบข้อมูลก่อนกดยืนยัน เพราะ <strong>นำเข้าแล้วไม่สามารถลบเองได้</strong></li>
     </ul>
 
     <img src="d003.png" alt="ทุกคนทำได้">
 
+    <h2><i class="fa-solid fa-lightbulb"></i> คำแนะนำจากบริษัท</h2>
+    <p>
+      บริษัท โกลบอล แวลู จำกัด พัฒนาระบบ TheBank มากว่า <strong>22 ปี</strong>  
+      เพื่อให้ทุกองค์กรชุมชนในประเทศได้ใช้มาตรฐานสากลด้านการบัญชี <br>
+      <em>ใส่ใจทุกขั้นตอน → ผลลัพธ์คือประสิทธิภาพสูงสุด</em><br>
+      <strong><i class="fa-solid fa-award text-warning"></i> TheBank คือมาตรฐานสากลที่ทุกคนเข้าถึงได้</strong>
+    </p>
+
     <!-- Contact Info -->
     <div class="contact-box">
       <h4><i class="fa-solid fa-headset"></i> ติดต่อเรา</h4>
-      <p><i class="fa-regular fa-clock"></i> จันทร์-ศุกร์ (09.00 น. - 17.00 น.) | เสาร์ (09.00 น. - 15.00 น.) <br>
-      <em>ยกเว้นวันอาทิตย์และวันหยุดนักขัตฤกษ์</em></p>
+      <p><i class="fa-regular fa-clock"></i> จันทร์-ศุกร์ (09.00 - 17.00) | เสาร์ (09.00 - 15.00)<br>
+        <em>ยกเว้นวันอาทิตย์และวันหยุดนักขัตฤกษ์</em>
+      </p>
       <p><i class="fa-solid fa-phone"></i> โทร. 088-9318109, 088-6031423, 082-5616969, 095-6913595</p>
       <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:globalvalueth@gmail.com">globalvalueth@gmail.com</a></p>
       <p><i class="fa-solid fa-file-signature"></i> ติดต่อขอใบเสนอราคา: <strong>095-6913595</strong></p>
