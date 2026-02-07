@@ -1,181 +1,248 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TheBank VDO2U</title>
-  <link rel="icon" href="https://www.globalvalueth.com/GIPIC/logoTheBankNEW24668.png" type="image/png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://apis.google.com/js/platform.js"></script>
-  <style>
-    body {
-      font-family: 'Noto Serif Thai', sans-serif;
-      background: linear-gradient(135deg, rgb(240, 243, 252), rgb(200, 234, 245), rgb(240, 243, 252));
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+<meta charset="UTF-8">
+<title>TheBank VDO2U</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    .video-container {
-      width: 100%;
-      max-width: 900px;
-      aspect-ratio: 16 / 9;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-      background: #000;
-    }
+<link rel="icon" href="https://www.globalvalueth.com/GIPIC/logoTheBankNEW24668.png" type="image/png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;600&display=swap" rel="stylesheet">
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+<style>
+/* ================= BASE ================= */
+body{
+  font-family:'Noto Serif Thai',sans-serif;
+  background:linear-gradient(135deg,#eef3ff,#d7f0ff,#eef3ff);
+  min-height:100vh;
+}
 
-    .subscribe-section {
-      text-align: center;
-      margin-top: 1.8rem;
-      background: #ffffff;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      width: 900px;
-      max-width: 900px;
-    }
+.hero{
+  text-align:center;
+  padding:2.5rem 1rem 1.2rem;
+}
+.hero h1{
+  font-size:2rem;
+  font-weight:600;
+  color:#0d47a1;
+}
+.hero small{color:#555;}
 
-    .btn-subscribe,
-    .btn-like {
-      display: inline-block;
-      background: #cc0000;
-      color: white;
-      font-size: 1rem;
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
-      transition: background 0.3s ease;
-      white-space: nowrap;
-      margin: 0 10px;
-    }
+/* ================= VIDEO ================= */
+.video-box{
+  max-width:960px;
+  margin:auto;
+  border-radius:18px;
+  overflow:hidden;
+  background:#000;
+  box-shadow:0 18px 45px rgba(0,0,0,.25);
+}
+.video-box iframe{
+  width:100%;
+  height:540px;
+  border:0;
+}
 
-    .btn-subscribe:hover {
-      background: #a00000;
-    }
+/* ================= CTA ================= */
+.cta{
+  max-width:960px;
+  margin:2rem auto;
+  background:#fff;
+  border-radius:18px;
+  padding:2rem;
+  text-align:center;
+  position:relative;
+  box-shadow:0 12px 28px rgba(13,71,161,0.18);
+}
+.cta::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:5px;
+  background:linear-gradient(90deg,#0d47a1,#5c9dff);
+  border-top-left-radius:18px;
+  border-top-right-radius:18px;
+}
+.cta-badge{
+  position:absolute;
+  top:-12px;
+  right:16px;
+  background:#0d47a1;
+  color:#fff;
+  font-size:.75rem;
+  padding:4px 10px;
+  border-radius:20px;
+  box-shadow:0 4px 10px rgba(13,71,161,.35);
+}
+.cta-note{
+  font-size:.85rem;
+  color:#546e7a;
+  margin-top:1rem;
+}
 
-    .btn-like {
-      background: #ff4081;
-    }
+/* CTA BUTTON */
+.btn-sub,
+.btn-like{
+  display:inline-block;
+  font-weight:600;
+  border-radius:12px;
+  padding:.7rem 1.4rem;
+  text-decoration:none;
+  margin:.4rem;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+  animation:ctaPulse 2s ease-in-out infinite;
+}
+.btn-sub{
+  background:linear-gradient(135deg,#ff0000,#b00000);
+}
+.btn-like{
+  background:linear-gradient(135deg,#ff4081,#e91e63);
+  animation-delay:1.2s;
+}
 
-    .btn-like:hover {
-      background: #e91e63;
-    }
+@keyframes ctaPulse{
+  0%{transform:scale(1); box-shadow:0 0 0 rgba(0,0,0,0);}
+  50%{transform:scale(1.05); box-shadow:0 0 20px rgba(0,0,0,.25);}
+  100%{transform:scale(1); box-shadow:0 0 0 rgba(0,0,0,0);}
+}
 
-    h4.title {
-      margin-bottom: 1rem;
-      color: #d32f2f;
-    }
+.btn-sub:hover,
+.btn-like:hover{
+  animation:none;
+  transform:scale(1.08);
+  box-shadow:0 14px 35px rgba(0,0,0,.35);
+}
 
-    .footer-note {
-      font-size: 0.85rem;
-      color: #666;
-      margin-top: 0.25rem;
-      text-align: center;
-    }
+/* ================= RECOMMEND ================= */
+.recommend{
+  max-width:960px;
+  margin:auto;
+}
+.card-video{
+  background:linear-gradient(135deg,#f4f8ff,#e6eeff);
+  border:1px solid #dde6ff;
+  border-radius:16px;
+  padding:1rem;
+  color:#0d47a1;
+  font-weight:500;
+  cursor:pointer;
+  position:relative;
+  transition:.2s;
+}
+.card-video::before{
+  content:"▶";
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:.85rem;
+  color:#516bdd;
+}
+.card-video:hover{
+  background:linear-gradient(135deg,#e9f0ff,#dfeaff);
+  box-shadow:0 10px 22px rgba(13,71,161,.18);
+  transform:translateY(-4px);
+}
 
-    .error {
-      color: red;
-      font-weight: bold;
-      margin-top: 1rem;
-    }
-  </style>
+/* ================= FOOTER ================= */
+footer{
+  margin-top:3rem;
+  background:#041C50;
+  color:#fff;
+  padding:2rem 1rem;
+  font-size:.9rem;
+  text-align:center;
+}
+footer a{
+  color:#90caf9;
+  text-decoration:none;
+}
+
+@media(max-width:768px){
+  .video-box iframe{height:240px;}
+}
+</style>
 </head>
 
 <body>
 
-  <div class="row text-center">
-    <h4 class="title" id="video-title">🎉 อย่าพลาดทุกอัปเดต! 🎉</h4>
-    <div class="footer-note">ลิขสิทธิ์เป็นของ บริษัท โกลบอล แวลู จำกัด แต่เพียงผู้เดียว &copy; พ.ศ.2547</div>
-  </div>
+<div class="hero">
+  <h1 id="video-title">🎬 วิดีโอแนะนำจาก TheBank Academy</h1>
+  <small>©สงวนลิขสิทธิ์ พ.ศ. 2547 โดย บริษัท โกลบอล แวลู จำกัด</small>
+</div>
 
-  <div class="video-container" id="video-box">
-    <iframe id="video-frame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-  </div>
+<div class="video-box">
+  <iframe id="video-frame" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
 
-  <div class="subscribe-section">
-    <h5>🎉 กดติดตามช่องของเราเพื่อรับชมวิดีโอใหม่ ๆ ก่อนใคร 😄</h5>
-    <a class="btn-subscribe" href="https://www.youtube.com/@TheBankAcademy?sub_confirmation=1" target="_blank">✅
-      กดติดตามช่อง</a>
-    <a class="btn-like" id="like-button" href="#" target="_blank">❤️ กด Like บน YouTube</a>
+<div class="cta">
+  <div class="cta-badge">แนะนำ</div>
+  <h5>🎉 ติดตามช่องเรา ลุ้นรางวัลใหญ่ได้ทุกเดือน</h5>
 
-    <div class="mt-4">
-      <h5>📚 หัวข้อแนะนำเพิ่มเติม:</h5>
-      <div class="row row-cols-1 row-cols-md-3 g-3 text-start">
-        <div class="col"><a href="javascript:void(0)" onclick="playVDO('QmMeYYXZSpY', 'การลงทะเบียนขอใช้ TheBank')" class="btn btn-outline-primary w-100">การลงทะเบียนขอใช้ TheBank</a></div>
-        <div class="col"><a href="javascript:void(0)" onclick="playVDO('QmMeYYXZSpY', 'การลงทะเบียนขอเพิ่มเครื่องใช้ TheBank')" class="btn btn-outline-primary w-100">การลงทะเบียนขอเพิ่มเครื่องใช้ TheBank</a></div>
-        <div class="col"><a href="javascript:void(0)" onclick="playVDO('QmMeYYXZSpY', 'การลงทะเบียนยืนยันเปิดใช้งาน TheBank')" class="btn btn-outline-primary w-100">การลงทะเบียนยืนยันเปิดใช้งาน TheBank</a></div>
-        <div class="col"><a href="javascript:void(0)" onclick="playVDO('QmMeYYXZSpY', 'การติดตั้งระบบ TheBank')" class="btn btn-outline-primary w-100">การติดตั้งระบบ TheBank</a></div>
-        <div class="col"><a href="javascript:void(0)" onclick="playVDO('QmMeYYXZSpY', 'การติดตั้งเครื่องพิมพ์สมุด Compuprint SP40Plus')" class="btn btn-outline-primary w-100">การติดตั้งเครื่องพิมพ์สมุด Compuprint SP40Plus</a></div>
-        <div class="col"><a href="javascript:void(0)" onclick="playVDO('QmMeYYXZSpY', 'การ Set ให้วินโดวส์ใช้ระบบวันที่เวลาภาษาไทย')" class="btn btn-outline-primary w-100">การ Set ให้วินโดวส์ใช้ระบบวันที่เวลาภาษาไทย</a></div>
-      </div>
+  <a class="btn-sub" href="https://www.youtube.com/@TheBankAcademy?sub_confirmation=1" target="_blank">
+    ✅ กดติดตามช่อง
+  </a>
+  <a class="btn-like" id="like-button" href="#" target="_blank">
+    ❤️ กด Like บน YouTube
+  </a>
+
+  <div class="cta-note">วิดีโอสอนใช้งานจริงจากทีม TheBank Academy</div>
+</div>
+
+<div class="recommend mt-4">
+  <h5 class="mb-3">📚 วิดีโอแนะนำเพิ่มเติม</h5>
+  <div class="row g-3">
+    <div class="col-md-4" onclick="playVDO('QmMeYYXZSpY','ลงทะเบียนขอใช้ TheBank')">
+      <div class="card-video">ลงทะเบียนขอใช้ TheBank</div>
+    </div>
+    <div class="col-md-4" onclick="playVDO('QmMeYYXZSpY','การขอเพิ่มเครื่องใช้ TheBank')">
+      <div class="card-video">การขอเพิ่มเครื่องใช้ TheBank</div>
+    </div>
+    <div class="col-md-4" onclick="playVDO('QmMeYYXZSpY','ลงทะเบียนเปิดใช้งาน TheBank')">
+      <div class="card-video">ลงทะเบียนเปิดใช้งาน TheBank</div>
+    </div>
+    <div class="col-md-4" onclick="playVDO('QmMeYYXZSpY','การติดตั้งระบบ TheBank')">
+      <div class="card-video">การติดตั้งระบบ TheBank</div>
+    </div>
+    <div class="col-md-4" onclick="playVDO('QmMeYYXZSpY','การติดตั้ง Compuprint SP40Plus')">
+      <div class="card-video">การติดตั้ง Compuprint SP40Plus</div>
+    </div>
+    <div class="col-md-4" onclick="playVDO('QmMeYYXZSpY','ให้วินโดวส์ใช้ระบบวันที่เวลาภาษาไทย')">
+      <div class="card-video">ให้วินโดวส์ใช้ระบบวันที่เวลาภาษาไทย</div>
     </div>
   </div>
+</div>
+
+<footer>
+  <strong>บริษัท โกลบอล แวลู จำกัด</strong><br>
+  ศูนย์พัฒนาซอฟต์แวร์ เชียงใหม่ | ศูนย์ลูกค้าสัมพันธ์ กรุงเทพ<br>
+  <i class="fas fa-phone"></i> <a href="tel:0889318109">088-9318109</a> |
+  <i class="fas fa-envelope"></i> <a href="mailto:globalvalueth@gmail.com">globalvalueth@gmail.com</a><br>
+  <i class="fas fa-globe"></i>
+  <a href="https://www.globalvalueth.com" target="_blank">www.globalvalueth.com</a><br><br>
+  © สงวนลิขสิทธิ์ พ.ศ.2547
+</footer>
 
 <script>
-  const query = new URLSearchParams(window.location.search);
-  const uVDO = query.get("uVDO");
-  const uName = query.get("uName");
-  const uclick = query.get("uclick");
+const q = new URLSearchParams(window.location.search);
+const uVDO  = q.get("uVDO");
+const uName = q.get("uName");
 
-  const videoFrame = document.getElementById("video-frame");
-  const likeButton = document.getElementById("like-button");
-  const title = document.getElementById("video-title");
+const frame = document.getElementById("video-frame");
+const title = document.getElementById("video-title");
+const like  = document.getElementById("like-button");
 
-  // ❌ บรรทัดนี้ทำให้ error เพราะไม่มี element ชื่อ thaiYear
-  // document.getElementById("thaiYear").textContent = new Date().getFullYear() + 543;
+if(uVDO){ playVDO(uVDO,uName); }
 
-  if (uVDO) {
-    playVDO(uVDO, uName);
-  }
-
-  function playVDO(videoID, videoName = "") {
-    const embedUrl = `https://www.youtube.com/embed/${videoID}?autoplay=1&mute=0&loop=1&playlist=${videoID}&rel=0&controls=1&vq=hd1080`;
-
-    videoFrame.src = embedUrl;
-    videoFrame.setAttribute("allow", "autoplay; encrypted-media");
-    videoFrame.setAttribute("allowfullscreen", "true");
-
-    likeButton.href = `https://www.youtube.com/watch?v=${videoID}`;
-
-    if (videoName) {
-      title.textContent = "🎬 " + videoName;
-    }
-  }
+function playVDO(id,name=""){
+  frame.src = `https://www.youtube.com/embed/${id}?autoplay=1&mute=0&rel=0`;
+  like.href = `https://www.youtube.com/watch?v=${id}`;
+  if(name) title.textContent = "🎬 " + name;
+}
 </script>
-  <br>
-  <h3>บริษัท โกลบอลแวลู จำกัด</h3>    
-<div class="footer-note">
-  <strong>สำนักงานใหญ่ :</strong> ศูนย์พัฒนาซอฟต์แวร์เซ็นเตอร์ เชียงใหม่, 
-  <strong>ศูนย์ลูกค้าสัมพันธ์ :</strong> กรุงเทพ |
-  <i class="fas fa-phone-alt"></i> 
-  <a href="tel:0889318109">088-9318109</a>, 
-  <a href="tel:0886031423">088-6031423</a>, 
-  <a href="tel:0956913595">095-6913595</a>, 
-  <a href="tel:0825616969">082-5616969</a> |
-  <i class="fas fa-envelope"></i> 
-  <a href="mailto:globalvalueth@gmail.com">globalvalueth@gmail.com</a> |
-  <i class="fas fa-globe"></i> 
-  <a href="https://www.globalvalueth.com" target="_blank">www.globalvalueth.com</a>
-</div>
-<br>
-  <div style="width: 100vw; background-color: #041C50; color: white; text-align: center; padding: 1rem 0; font-size: 0.95rem; font-weight: 500;">
-    © สงวนลิขสิทธิ์ พ.ศ.2547 - บริษัท โกลบอล แวลู จำกัด
-  </div>
 
 </body>
-
 </html>
